@@ -3,7 +3,7 @@ const app = require('express')()
 const httpServer = require('http').createServer(app)
 const options = {
   cors: {
-    origin: '*',
+    origin: 'https://rapid-aid-client.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
