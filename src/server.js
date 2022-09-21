@@ -94,7 +94,7 @@ app.use('/api/v1/orders', orderRoute)
 // app.use('/api', clientsRoute);
 
 app.get('/', (req, res) => {
-  res.status(200).send('Simple get request on route /api')
+  res.status(200).send('Simple get request on route /')
 })
 
 module.exports = app
