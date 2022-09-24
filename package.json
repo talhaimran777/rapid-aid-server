@@ -20,9 +20,10 @@
     "md5": "^2.3.0",
     "mongoose": "^5.12.13",
     "normalize-url": "6.1.0",
-    "socket.io": "^4.2.0",
     "validator": "^13.6.0",
-    "is-empty": "^1.2.0"
+    "is-empty": "^1.2.0",
+    "socket.io": "^2.4.0"
+
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

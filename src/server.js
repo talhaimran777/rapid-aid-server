@@ -1,18 +1,11 @@
-const express = require('express')
-const app = require('express')()
-const httpServer = require('http').createServer(app)
+const express = require("express");
+const app = express();
+var httpServer = require("http").Server(app);
+const io = require("socket.io")(httpServer);
+const cors = require("cors");
 
-var io = require('socket.io')(httpServer, {
-  cors: {
-    origin: [
-      "https://rapid-aid-client-git-master-talhaimran777.vercel.app",
-      "https://rapid-aid-client-talhaimran777.vercel.app",
-      "https://rapid-aid-client.vercel.app"
-    ]
-  }
-});
+app.use(cors());
 
-const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
@@ -64,7 +57,6 @@ connectDb()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
 
 app.use((req, res, next) => {
   req.io = io
@@ -82,17 +74,6 @@ app.use('/api/v1/messages', messageRoute)
 app.use('/api/v1/conversations', conversationRoute)
 app.use('/api/v1/offers', offerRoute)
 app.use('/api/v1/orders', orderRoute)
-
-// USING AUTH ROUTE
-// app.post('/login', (req, res) => {
-//   res.send({ status: 200, message: 'Login successful' })
-// })
-
-// USING TASKS ROUTE
-// app.use('/api', tasksRoute);
-
-// USING USERS ROUTES
-// app.use('/api', clientsRoute);
 
 app.get('/', (req, res) => {
   res.status(200).send('Simple get request on route /')
