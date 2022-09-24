@@ -69,7 +69,7 @@ app.use((req, res, next) => {
   req.io = io
 
   io.on('connection', (socket) => {
-    console.log('User connected')
+    socket.emit("connection", null);
   })
   next()
 })
