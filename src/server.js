@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 var httpServer = require("http").Server(app);
-const io = require("socket.io")(httpServer);
+const io = require("socket.io")(httpServer, {
+  origins: "https://rapid-aid-client.vercel.app/"
+});
+
 const cors = require("cors");
 
 app.use(cors());
