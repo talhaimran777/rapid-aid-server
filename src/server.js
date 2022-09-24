@@ -1,15 +1,16 @@
 const express = require('express')
 const app = require('express')()
 const httpServer = require('http').createServer(app)
-const options = {
+
+var io = require('socket.io')(httpServer, {
   cors: {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  },
-}
-const io = require('socket.io')(httpServer, options)
+    origin: [
+      "https://rapid-aid-client-git-master-talhaimran777.vercel.app",
+      "https://rapid-aid-client-talhaimran777.vercel.app",
+      "https://rapid-aid-client.vercel.app"
+    ]
+  }
+});
 
 const cors = require('cors')
 const mongoose = require('mongoose')
