@@ -1,11 +1,11 @@
-const express = require("express");
-const app = express();
-var httpServer = require("http").Server(app);
-const io = require("socket.io")(httpServer, {
-  origins: "https://rapid-aid-client.vercel.app/"
-});
+const http = require('http');
+const express = require('express');
+const socketio = require('socket.io');
+const cors = require('cors');
 
-const cors = require("cors");
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
 
 app.use(cors());
 
@@ -42,7 +42,7 @@ let connectDb = async () => {
 
       const port = process.env.PORT || 5000
 
-      httpServer.listen(port, () => console.log('Listening for requests on port: ' + port))
+      server.listen(port, () => console.log('Listening for requests on port: ' + port))
     }
   } catch (err) {
     console.log(err)
